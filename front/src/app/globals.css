@@ -1,36 +1,55 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #f4f4f5;
+  --panel: #101010;
+  --panel-soft: #151515;
+  --border: #242424;
+  --muted: #a1a1aa;
+  --accent: #1ed760;
+  --accent-soft: #1db954;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-panel: var(--panel);
+  --color-panel-soft: var(--panel-soft);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% -10%, rgb(30 215 96 / 0.2), transparent 28%),
+    radial-gradient(circle at 95% 10%, rgb(255 255 255 / 0.07), transparent 25%),
+    linear-gradient(160deg, #050505, #090909 45%, #0f0f0f 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 9px;
 }
 
 #carrosel ::-webkit-scrollbar {
-  height: 0px;
+  height: 0;
 }
 
 #carrosel {
@@ -39,20 +58,24 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #111;
+  background: #0d0d0d;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #353535;
+  background: #2c2c2c;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #16a34a;
+  background: #1db954;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-  opacity: 0.6;
+  filter: invert(0.9);
+  opacity: 0.7;
   cursor: pointer;
+}
+
+input::placeholder {
+  color: #6b7280;
 }

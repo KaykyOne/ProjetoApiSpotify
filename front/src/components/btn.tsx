@@ -15,9 +15,9 @@ export default function Btn({ children, className, tip, ...props }: BtnProps) {
 
   // CSS styles mappings for diferent button variants - applies Tailwind classes dynamicly
   const csss = {
-    button1: 'bg-white py-4 flex gap-4 px-3 flex justify-center items-center cursor-pointer transition-all duration-300 text-black hover:bg-neutral-300 w-full rounded-full',
-    cancel: 'bg-red-800 py-4 flex gap-4 px-3 flex justify-center items-center cursor-pointer transition-all duration-300 text-white hover:bg-red-700 w-full rounded-full',
-    submit: 'bg-green-500 py-4 px-3 flex justify-center items-center cursor-pointer transition-all duration-300 text-black hover:bg-green-700 w-full rounded-full',
+    button1: 'bg-neutral-100 py-3.5 px-4 flex gap-3 justify-center items-center cursor-pointer transition-all duration-300 text-black hover:bg-white hover:shadow-[0_8px_30px_rgb(255_255_255_/_0.18)] w-full rounded-full font-semibold disabled:opacity-60 disabled:cursor-not-allowed',
+    cancel: 'bg-[#2a1115] py-3.5 px-4 flex gap-3 justify-center items-center cursor-pointer transition-all duration-300 text-rose-200 border border-rose-900/70 hover:bg-[#3a171d] w-full rounded-full font-medium disabled:opacity-60 disabled:cursor-not-allowed',
+    submit: 'bg-[#1ed760] py-3.5 px-4 flex justify-center items-center cursor-pointer transition-all duration-300 text-black hover:bg-[#25e068] hover:shadow-[0_8px_26px_rgb(30_215_96_/_0.32)] w-full rounded-full font-semibold disabled:opacity-60 disabled:cursor-not-allowed',
   }
 
   return (

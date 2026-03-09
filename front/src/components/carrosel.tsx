@@ -44,25 +44,25 @@ export default function Carrosel({ artists }: { artists?: Artist[] }) {
         if (artist.images.length === 0) return null;
         return (
             // Carousel item - displays artist with hover scale effect and search redirect on click
-            <div className='bg-neutral-800 hover:bg-neutral-700 transition-all duration-300 hover:scale-105 rounded-lg flex flex-col justify-center items-center p-4 cursor-pointer relative min-w-[450px] min-h-[300px]' onClick={() => router.push(`./search?artist=${encodeURIComponent(artist.name)}`)}>
+            <div className='bg-[#111111] border border-neutral-800 hover:border-neutral-700 transition-all duration-300 hover:scale-[1.01] rounded-2xl flex flex-col justify-center items-center p-4 cursor-pointer relative min-w-[320px] md:min-w-[420px] min-h-[260px] md:min-h-[300px] overflow-hidden' onClick={() => router.push(`./search?artist=${encodeURIComponent(artist.name)}`)}>
                 <Image
                     src={artist.images[0]?.url}
                     alt={artist.name}
-                    className="rounded-lg w-full h-full absolute object-cover"
+                    className="rounded-2xl w-full h-full absolute object-cover"
                     width={1000}
                     height={1000}
                 />
-                <div className='absolute flex flex-col w-full h-full justify-center text-center items-center bg-black/70 rounded-lg z-10'>
-                    <h3 className="mt-2 text-lg font-semibold">{artist.name}</h3>
-                    <h3 className="mt-2 text-5xl font-semibold">{(artist.followers.total).toLocaleString()}</h3>
-                    <p>Seguidores</p>
+                <div className='absolute flex flex-col w-full h-full justify-end text-left items-start bg-gradient-to-t from-black/90 via-black/40 to-transparent rounded-2xl z-10 p-6'>
+                    <h3 className="text-2xl font-bold leading-tight">{artist.name}</h3>
+                    <h3 className="text-4xl md:text-5xl font-black mt-2">{(artist.followers.total).toLocaleString()}</h3>
+                    <p className='text-neutral-300 text-sm uppercase tracking-[0.18em] mt-1'>seguidores</p>
                 </div>
             </div>
         )
     }
 
     return (
-        <div ref={carouselRef} id='carrosel' className='flex gap-4 overflow-x-auto w-full py-4'>
+        <div ref={carouselRef} id='carrosel' className='flex gap-4 overflow-x-auto w-full py-3'>
             {artists.map((artist) => (
                 <div key={artist.id}>
                     <RenderItem artist={artist} />

@@ -15,8 +15,8 @@ export default function Loading({ type = 'simple', number = 1, flex = false, cla
   const CardLoading = () => {
     return (
       type == "bone" ?
-        (<div className={`w-full h-[100px] bg-neutral-700 animate-pulse rounded-2xl ${className}`}></div>)
-        : (<div className={`w-full h-full min-h-75 flex justify-center items-center ${className}`}><div className="animate-spin border-l-2 border-neutral-500 rounded-full h-6 w-6"></div></div>)
+        (<div className={`w-full h-[100px] bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 animate-pulse rounded-2xl border border-neutral-700/70 ${className}`}></div>)
+        : (<div className={`w-full h-full min-h-75 flex justify-center items-center ${className}`}><div className="animate-spin border-l-2 border-[#1ed760] border-t-2 border-t-transparent rounded-full h-6 w-6"></div></div>)
     )
   }
 

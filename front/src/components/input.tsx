@@ -8,9 +8,8 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> &{
 // Custom input component with dark theme styling and green focus state
 export default function Input({ className, ...props }: InputProps) {
   return (
-    // Input field with dynamic styling - includes focus state and cutom border colors
     <input
-      className={`bg-neutral-900 px-5 py-3 w-full rounded-lg outline-none border border-neutral-800 focus:border-green-500 transition-colors ${className}`}
+      className={`bg-[#141414]/90 px-4 py-3 w-full rounded-xl outline-none border border-[#2a2a2a] focus:border-[#1ed760] focus:ring-2 focus:ring-[#1ed760]/25 transition-all text-neutral-100 ${className}`}
       {...props}
     />
   )

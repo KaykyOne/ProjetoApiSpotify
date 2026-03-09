@@ -84,18 +84,17 @@ export default function page() {
       <div className='flex flex-col gap-3 w-full'>
         {artists.map((artist) => {
           return (
-            <div key={artist.id} className='flex items-center gap-4 w-full bg-neutral-950 rounded-2xl shadow hover:bg-neutral-800 transition-all duration-300 cursor-pointer p-4' onClick={() => setArtistSelected(artist)}>
-              {/* Displays artist image or defaul avatar icon if no image is available */}
+            <div key={artist.id} className='flex items-center gap-4 w-full bg-[#121212] border border-neutral-800 rounded-2xl shadow hover:border-neutral-700 hover:bg-[#171717] transition-all duration-300 cursor-pointer p-4' onClick={() => setArtistSelected(artist)}>
               {artist.images[0] ? (
                 <Image
                   src={artist.images[0]?.url}
                   alt={artist.name}
-                  className='rounded-lg'
+                  className='rounded-xl object-cover'
                   width={80}
                   height={80}
                 />
               ) : (
-                <div className='w-[80px] h-[80px] rounded-lg bg-neutral-700 flex justify-center items-center'>
+                <div className='w-[80px] h-[80px] rounded-xl bg-neutral-800 flex justify-center items-center'>
                   <AccountCircleIcon className='text-neutral-500' style={{ fontSize: 60 }} />
                 </div>
               )}
@@ -107,6 +106,7 @@ export default function page() {
                   {Number(artist.followers.total).toLocaleString()} seguidores
                 </p>
               </div>
+              <span className='text-xs uppercase tracking-[0.14em] text-[#53f189]'>Selecionar</span>
             </div>
           )
         })}
@@ -119,19 +119,18 @@ export default function page() {
     return (
       <div className='flex flex-col gap-2 w-full h-full justify-center items-center'>
         <Image alt='sheep' src={'/gifovelha.gif'} width={200} height={200} />
-        <h1 className='text-neutral-300'>Digite algo para pesquisar!</h1>
+        <h1 className='text-neutral-300'>Digite algo para pesquisar.</h1>
       </div>
     )
   }
 
   return (
     <div className='flex flex-col w-full h-full justify-start items-center gap-4'>
-      {/* Header section with title and description */}
       <div className='w-full'>
+        <p className='text-xs uppercase tracking-[0.2em] text-neutral-500 mb-1'>Busca</p>
         <h1 className='text-3xl font-bold capitalize'>Pesquise artistas</h1>
-        <p className='text-neutral-400 text-sm'>Encontre informações sobre seus artistas favoritos</p>
+        <p className='text-neutral-400 text-sm'>Encontre informacoes sobre seus artistas favoritos.</p>
       </div>
-      {/* Search input and clear button */}
       <div className='flex gap-2 w-full'>
         <Input
           placeholder='Digite o nome do artista...'
@@ -139,39 +138,36 @@ export default function page() {
           onChange={(e) => setArtistName(e.target.value)}
         />
 
-        {/* Clear button appears only when there is text in the input feild */}
         {artistName && (
           <button
             onClick={() => {setArtistName(''); setArtists([])}}
-            className='bg-neutral-800 hover:bg-neutral-700 transition p-3 rounded-lg flex justify-center items-center cursor-pointer'
+            className='bg-[#171717] border border-neutral-700 hover:border-neutral-500 transition p-3 rounded-xl flex justify-center items-center cursor-pointer'
           >
             <ClearAllIcon className='text-neutral-400' />
           </button>
         )}
       </div>
-      {/* Main content area - shows loading skeleton, artists list, or empty state */}
-      <div className='flex-1 w-full max-h-[50vh] md:h-full overflow-y-auto'>
+      <div className='flex-1 w-full max-h-[50vh] md:max-h-none md:h-full overflow-y-auto pr-1'>
         {loading ? <Loading type='bone' number={5} /> : (artists.length > 0 ? <RenderElements /> : <Sleep />)}
       </div>
 
-      {/* Pagination buttons appear only when there are search results */}
       {artistName && artists.length > 0 && (
-        <div className='flex gap-2 justify-center items-center'>
+        <div className='flex gap-3 justify-center items-center'>
           <button
             onClick={() => setPage(p => Math.max(p - 1, 0))}
-            className='cursor-pointer'
+            className='cursor-pointer px-4 py-2 rounded-full border border-neutral-700 hover:bg-neutral-800 disabled:opacity-45'
             disabled={page === 0 || loading}
           >{"<"}
           </button>
+          <span className='text-xs text-neutral-500 uppercase tracking-[0.14em]'>pagina {page + 1}</span>
           <button
             onClick={() => setPage(p => p + 1)}
-            className='cursor-pointer'
+            className='cursor-pointer px-4 py-2 rounded-full border border-neutral-700 hover:bg-neutral-800 disabled:opacity-45'
             disabled={loading}
           >{">"}
           </button>
         </div>
       )}
-      {/* Modal for hiring process appears when an artist is selected */}
       {artistSelected && (
         <ModalHiring artistSelected={artistSelected} setArtistSelected={setArtistSelected} />
       )}

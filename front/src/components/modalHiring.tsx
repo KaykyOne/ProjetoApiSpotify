@@ -22,8 +22,8 @@ export default function ModalHiring({ artistSelected, setArtistSelected }: Props
 
     // CSS styles for step indicator dots - shows current step position
     const css = {
-        selected: 'bg-neutral-200 rounded-full h-3 w-3',
-        notSelected: 'bg-neutral-600 rounded-full h-3 w-3'
+        selected: 'bg-[#53f189] rounded-full h-2.5 w-8',
+        notSelected: 'bg-neutral-700 rounded-full h-2.5 w-2.5'
     }
 
     // Submits hiring data to API - creates contract and closes modal
@@ -45,8 +45,8 @@ export default function ModalHiring({ artistSelected, setArtistSelected }: Props
     const [num, setNum] = useState<number>(0);
     return (
         <Modal>
-            <div className='flex flex-col w-full h-full md:min-w-[400px] md:min-h-[400px]'>
-                <div className='flex w-full justify-between mb-5'>
+            <div className='flex flex-col w-full h-full md:min-w-[420px] md:min-h-[400px]'>
+                <div className='flex w-full justify-between mb-5 text-sm text-neutral-300'>
                     {num > 0 ? <button className='cursor-pointer' onClick={() => setNum(num - 1)} disabled={num == 0}>{"< Voltar"}</button> : <div></div>}
                     <button className='cursor-pointer' onClick={() => setArtistSelected(null)}>X</button>
                 </div>
@@ -55,7 +55,7 @@ export default function ModalHiring({ artistSelected, setArtistSelected }: Props
                     <div className='flex flex-col gap-2 items-start h-full'>
                         <div className='flex flex-col mb-4'>
                             <h1 className='text-3xl font-semibold'>Artista Selecionado</h1>
-                            <h3 className='text-sm font-light text-neutral-300'>Confirme se esse é o artista que você deseja contratar</h3>
+                            <h3 className='text-sm font-light text-neutral-400'>Confirme se esse e o artista que voce deseja contratar</h3>
                         </div>
 
                         <div className='text-neutral-400 gap-2 flex flex-col w-full'>
@@ -67,7 +67,7 @@ export default function ModalHiring({ artistSelected, setArtistSelected }: Props
                             <Input value={artistSelected.type} disabled />
                             <label>Seguidores:</label>
                             <Input value={(artistSelected.followers.total).toLocaleString()} disabled />
-                            <a href={artistSelected.external_urls.spotify} className='bg-neutral-800 p-2 rounded-lg' target="_blank">Ouça no Spotify</a>
+                            <a href={artistSelected.external_urls.spotify} className='bg-[#171717] border border-neutral-700 p-3 rounded-xl text-neutral-200 hover:border-[#1ed760]/40 transition-colors' target="_blank">Ouvir no Spotify</a>
                         </div>
 
                         <Btn className='mt-5' onClick={() => setNum(1)}>
@@ -80,7 +80,7 @@ export default function ModalHiring({ artistSelected, setArtistSelected }: Props
                     <div className='flex flex-col gap-2 items-start h-full'>
                         <div className='flex flex-col mb-4'>
                             <h1 className='text-3xl font-semibold'>Contratação</h1>
-                            <h3 className='text-sm font-light text-neutral-300'>Preencha os dados e contrate o artista!</h3>
+                            <h3 className='text-sm font-light text-neutral-400'>Preencha os dados e contrate o artista.</h3>
                         </div>
                         <form className='flex flex-col gap-2 w-full' onSubmit={submitHiring}>
                             <label className='text-neutral-400'>Valor da Contratação (R$):</label>
@@ -96,7 +96,7 @@ export default function ModalHiring({ artistSelected, setArtistSelected }: Props
 
                     </div>
                 )}
-                <div className='flex gap-2 w-full justify-center mt-3'>
+                <div className='flex gap-2 w-full justify-center mt-4'>
                     <div className={num == 0 ? css.selected : css.notSelected}></div>
                     <div className={num == 1 ? css.selected : css.notSelected}></div>
                 </div>

@@ -56,22 +56,23 @@ export default function page() {
 
 
   return (
-    <div className='w-full h-full flex flex-col gap-6 pt-6 pb-10'>
-      <div className='flex flex-col'>
-        <h1 className='text-5xl font-semibold'>Bem-Vindo!</h1>
-        <h4 className='text-neutral-400 font-light'>Seu hub de descoberta e contratação de artistas</h4>
+    <div className='w-full h-full flex flex-col gap-6 pt-2 pb-8'>
+      <div className='flex flex-col gap-1'>
+        <p className='text-xs uppercase tracking-[0.2em] text-neutral-500'>Dashboard</p>
+        <h1 className='text-4xl md:text-5xl font-semibold leading-tight'>Bem-Vindo!</h1>
+        <h4 className='text-neutral-400 font-light'>Seu hub de descoberta e contratacao de artistas.</h4>
       </div>
 
       {/* Stats Section - displays total artists and contracts count */}
       {loading ? <Loading type='bone' number={2} flex={true} /> : (
         <div className='grid grid-cols-2 gap-3'>
-          <div className='bg-gradient-to-br from-purple-500/20 to-purple-600/10 p-4 rounded-lg border border-purple-500/30'>
-            <p className='text-neutral-400 text-sm'>Total de Artistas</p>
-            <p className='text-2xl font-bold text-purple-400'>1,247</p>
+          <div className='bg-[#121212] p-4 rounded-2xl border border-neutral-800'>
+            <p className='text-neutral-400 text-sm uppercase tracking-wide'>Total de Artistas</p>
+            <p className='text-3xl font-bold text-neutral-100 mt-1'>1.247</p>
           </div>
-          <div className='bg-gradient-to-br from-green-500/20 to-green-600/10 p-4 rounded-lg border border-green-500/30'>
-            <p className='text-neutral-400 text-sm'>Contratos</p>
-            <p className='text-2xl font-bold text-green-400'>{hirings.length}</p>
+          <div className='bg-[#121212] p-4 rounded-2xl border border-[#1ed760]/35'>
+            <p className='text-neutral-400 text-sm uppercase tracking-wide'>Contratos</p>
+            <p className='text-3xl font-bold text-[#53f189] mt-1'>{hirings.length}</p>
           </div>
         </div>
       )}
@@ -80,13 +81,13 @@ export default function page() {
       {/* Badges & Info - displays achievements and trending info */}
       {loading ? <Loading type='bone' number={3} flex={true} /> : (
         <div className='flex flex-wrap gap-3 items-center'>
-          <div className='px-4 py-2 rounded-lg border border-amber-600 text-amber-600 hover:bg-amber-600/10 transition'>
+          <div className='px-4 py-2 rounded-full border border-neutral-700 text-neutral-300 hover:bg-neutral-800 transition'>
             <p className='text-sm font-medium'>⭐ +99 artistas adicionados</p>
           </div>
-          <div className='px-4 py-2 rounded-lg border border-green-600 text-green-600 hover:bg-green-600/10 transition'>
+          <div className='px-4 py-2 rounded-full border border-[#1ed760]/45 text-[#53f189] hover:bg-[#1ed760]/10 transition'>
             <p className='text-sm font-medium'>✓ Contratos diretos!</p>
           </div>
-          <div className='px-4 py-2 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-600/10 transition'>
+          <div className='px-4 py-2 rounded-full border border-neutral-700 text-neutral-300 hover:bg-neutral-800 transition'>
             <p className='text-sm font-medium'>🎵 Trending esta semana</p>
           </div>
         </div>
@@ -94,7 +95,7 @@ export default function page() {
 
       {/* Carousel Section - displays featured artists in horizontal scrolling list */}
       <div>
-        <h2 className='text-2xl font-semibold mb-4'>Top Semanal</h2>
+        <h2 className='text-2xl font-semibold mb-2'>Top Semanal</h2>
         {loading ? <Loading type='bone' flex={true} number={4} /> : <Carrosel artists={artists} />}
       </div>
 
@@ -106,13 +107,13 @@ export default function page() {
           <div className='space-y-3'>
             {hirings.map((hiring, index) => (
               index < 5 && (
-                <div key={index} className='p-4 rounded-lg border border-neutral-700 hover:border-neutral-600 transition'>
+                <div key={index} className='p-4 rounded-2xl border border-neutral-800 bg-[#111111] hover:border-neutral-700 transition'>
                   <div className='flex justify-between items-center'>
                     <div>
                       <p className='text-sm font-medium'>Novo contato: {hiring.name}</p>
                       <p className='text-xs text-neutral-400 mt-1'>{"R$" + hiring.value.toLocaleString()}</p>
                     </div>
-                    <span className='text-xs bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full'>Vantajoso</span>
+                    <span className='text-xs bg-[#1ed760]/15 text-[#53f189] border border-[#1ed760]/30 px-3 py-1 rounded-full'>Vantajoso</span>
                   </div>
                 </div>
               )

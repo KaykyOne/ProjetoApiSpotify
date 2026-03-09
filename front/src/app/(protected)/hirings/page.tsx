@@ -68,33 +68,35 @@ export default function page() {
       ) : (
         hirings.map((hiring) => {
           return (
-            <div key={hiring.id} className='w-full bg-gradient-to-br from-neutral-800/50 to-neutral-900/80 p-6 rounded-xl shadow-lg border border-neutral-700/50 hover:border-amber-600/50 transition flex flex-col gap-4'>
+            <div key={hiring.id} className='w-full bg-[#121212] p-6 rounded-2xl shadow-lg border border-neutral-800 hover:border-neutral-700 transition flex flex-col gap-4'>
               <div className='flex justify-between items-start gap-4'>
                 <div className='flex-1'>
                   <h2 className='text-2xl font-bold text-white mb-1'>{hiring.name}</h2>
                   <div className='flex items-center gap-2'>
-                    <span className='inline-block w-2 h-2 rounded-full bg-green-500'></span>
-                    <p className='text-xs text-green-400 font-medium'>Contratação Ativa</p>
+                    <span className='inline-block w-2 h-2 rounded-full bg-[#1ed760]'></span>
+                    <p className='text-xs text-[#53f189] font-medium uppercase tracking-wide'>Contratacao ativa</p>
                   </div>
                 </div>
-                <div className='bg-amber-600/20 border border-amber-600/50 px-4 py-2 rounded-lg'>
-                  <p className='text-lg font-bold text-amber-400'>R$ {hiring.value}</p>
+                <div className='bg-[#1ed760]/10 border border-[#1ed760]/35 px-4 py-2 rounded-xl'>
+                  <p className='text-lg font-bold text-[#53f189]'>R$ {hiring.value}</p>
                 </div>
               </div>
 
               <div className='grid grid-cols-2 gap-4'>
-                <div className='bg-neutral-900/50 rounded-lg p-3 border border-neutral-700/50'>
-                  <p className='text-xs text-neutral-400 mb-1'>📅 Data do Evento</p>
+                <div className='bg-[#171717] rounded-xl p-3 border border-neutral-700/70'>
+                  <p className='text-xs text-neutral-400 mb-1'>Data do Evento</p>
                   <p className='text-sm font-semibold text-neutral-200'>{format(addDays(new Date(hiring?.event_date!), 1), 'dd/MM/yyyy')}</p>
                 </div>
-                <div className='bg-neutral-900/50 rounded-lg p-3 border border-neutral-700/50'>
-                  <p className='text-xs text-neutral-400 mb-1'>📍 Localização</p>
+                <div className='bg-[#171717] rounded-xl p-3 border border-neutral-700/70'>
+                  <p className='text-xs text-neutral-400 mb-1'>Localizacao</p>
                   <p className='text-sm font-semibold text-neutral-200 truncate'>{hiring.address}</p>
                 </div>
               </div>
 
-              <Btn tip='cancel' onClick={() => { setSelectedHiring(hiring); setFunctionCalled({ tip: "cancel" }); }}>Cancelar Contratação</Btn>
-              <Btn tip='button1' onClick={() => { setSelectedHiring(hiring); setFunctionCalled({ tip: "see" }); }}>Visualizar Contratação</Btn>
+              <div className='flex flex-col md:flex-row gap-3'>
+                <Btn tip='cancel' onClick={() => { setSelectedHiring(hiring); setFunctionCalled({ tip: "cancel" }); }}>Cancelar Contratacao</Btn>
+                <Btn tip='button1' onClick={() => { setSelectedHiring(hiring); setFunctionCalled({ tip: "see" }); }}>Visualizar Contratacao</Btn>
+              </div>
 
             </div>
           )
@@ -115,27 +117,25 @@ export default function page() {
 
   return (
     <div className='h-full w-full'>
-      {/* Header section with title and description */}
       <div className='mb-8'>
+        <p className='text-xs uppercase tracking-[0.2em] text-neutral-500 mb-1'>Contratacoes</p>
         <h1 className='text-4xl font-bold mb-2'>Minhas Contratações</h1>
         <p className='text-neutral-400'>Gerencie todos os seus eventos e contratos</p>
       </div>
 
-      {/* Display hirings list or empty state message */}
       {hirings.length > 0 ? (
         <div>
           <div className='mb-4 flex items-center gap-2'>
             <span className='text-sm text-neutral-400'>Total de eventos:</span>
-            <span className='bg-amber-600/20 text-amber-400 px-3 py-1 rounded-full text-sm font-medium'>{hirings.length} contratações</span>
+            <span className='bg-[#1ed760]/10 border border-[#1ed760]/35 text-[#53f189] px-3 py-1 rounded-full text-sm font-medium'>{hirings.length} contratacoes</span>
           </div>
           <div className='flex flex-col gap-4'>
             <RenderHirings />
           </div>
         </div>
       ) : (
-        <div className='h-96 flex flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed border-neutral-700'>
+        <div className='h-96 flex flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed border-neutral-700 bg-[#0f0f0f]'>
           <p className='text-4xl'>🎭</p>
-          {/* Empty state message - shows when no hiring contracs exist */}
           <p className='text-neutral-400 text-lg'>Nenhuma contratação encontrada</p>
           <p className='text-neutral-500 text-sm'>Explore artistas e crie novos eventos</p>
         </div>
@@ -163,7 +163,7 @@ export default function page() {
                       <Loading type='simple' />
                     </div> 
                   ) : (
-                    <div className='flex flex-col gap-4 min-w-[400px] pb-5'>
+                    <div className='flex flex-col gap-4 min-w-[320px] md:min-w-[400px] pb-5'>
                       <div>
                         <h2 className='text-2xl font-bold mb-1'>Detalhes da Contratação</h2>
                         <p className='text-neutral-400 text-sm'>Veja as informações completas sobre esta contratação.</p>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Navbar from "@/components/navbar";
 import "./globals.css";
 
 // Import custom font families for consistent typography
@@ -28,15 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      {/* Body with custom fonts applied through CSS variables */}
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased justify-center items-center flex`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex items-stretch justify-center`}
       >
-        {/* Main container - provides base layout with flexbox and responsive height */}
-        <div className="flex flex-col w-full h-screen relative py-5 items-center justify-start">
+        <div className="flex flex-col w-full min-h-screen relative px-3 py-4 md:px-5 md:py-6 items-center justify-start">
           {children}
         </div>
-
       </body>
     </html>
   );
